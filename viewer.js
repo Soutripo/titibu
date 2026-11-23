@@ -2,7 +2,7 @@
    index.html からは ChichibuViewer.unlock(鍵) → ChichibuViewer.show() の順に呼ばれます。 */
 (function(){
 const VIEWER_CSS=`
-  html,body{height:100%;margin:0}
+  html,body{height:100%;height:100dvh;margin:0}
   body{display:flex;flex-direction:column;background:#07131c;
     font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif}
   #frames{flex:1;position:relative;min-height:0}
@@ -15,7 +15,7 @@ const VIEWER_CSS=`
   #toast.on{opacity:1}
   #err{display:none;padding:12px 16px;color:#fff;background:#b2452c;font-size:13px}
 #exPop,#infoPop{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:16px}
-#exPop .ex-box,#infoPop .ex-box{width:min(480px,100%);max-height:86vh;overflow:auto;background:#fff;color:#1f2d3a;border:2px solid #1f77a6;border-radius:6px;box-shadow:0 6px 28px rgba(0,0,0,.45)}
+#exPop .ex-box,#infoPop .ex-box{width:min(480px,100%);max-height:86vh;max-height:86dvh;overflow:auto;background:#fff;color:#1f2d3a;border:2px solid #1f77a6;border-radius:6px;box-shadow:0 6px 28px rgba(0,0,0,.45)}
 #exPop .ex-head,#infoPop .ex-head{background:#1f77a6;color:#fff;font-size:18px;font-weight:700;padding:12px 16px}
 #exPop .ex-sub,#infoPop .ex-sub{padding:10px 16px 2px;font-size:13px;color:#456}
 #exPop .ex-item,#infoPop .ex-item{padding:10px 16px;border-bottom:1px solid #d6e3ec}
