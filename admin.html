@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>臨時列車の登録</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%231f77a6%22/%3E%3Cg stroke=%22%23fff%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M10 15H54M10 27H54M10 39H54M10 51H54%22 stroke-width=%221.6%22 opacity=%22.55%22/%3E%3Cpath d=%22M12 12L28 27H34L52 53%22 stroke-width=%224%22/%3E%3Cpath d=%22M14 53L30 39H36L50 12%22 stroke-width=%224%22 stroke-dasharray=%220%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEdUlEQVR4nMSXe1BUVRzHv+e6G0LykOHpgwUJJSZIMBuEkMiQyKIcS6UMTUmnqCmrCf9oev2FTmaN1UwEOTRhZRExjMPDQXsAwQzVgoJAoAQLLtDAQui6sNzrOUfXgX1eWV0/M3fm3HvO+f1+5/we51wFZhD6WqmP6KbfC0jxRMJKEBKAm4EkDUkEaoA0CAb3Qz0fb9SZuoipsST3m3RBEgoIwSLcQiQJAyIRszX7t1VcN2BpbnGaAFIJFzIN8VFmBAnZV7wQEloJSDBcCN+JKUW0AiLZTrfdpcoZzNWC0pglsIAz7/zpxVT+BHi6wxkEquW73evw+1sZNkZI8QINAgsDlAoBcSo//JyzHiG+CzBXtt4fjvhlAdBPGa32M90KuheqmR9XBHmj4nQfX/0iHw9UvJqOovpODE9cxo3AVvZ6agxvtw2M4vnEFajt0uKfwbEZFhAVUeUelawJWOCmwNe7UhAX4odx/RSeKajBmf5RyCU7KRJvb4hF1/A4Uj86zoLOuqG2BEwYjMjMP4m6rkF4uStxbM/DSAgPhBzclfOQkxLF2werWmwqt2sAw2CcxvavTuF4Sy887lCgaOeDSI1aDEfseiASCz3ccPaCDhVn+uyOFRzIglGUkHO0Dt83nYNynoAvnkvCEytVNsd7zldid/LdvH2gqtmReCggk9wfG2ksTOIF6ttPtibw2Bi9NMn7as7243T/CG/vocq9qBHNmhGcah9wKNciCFkWJIQH2ZywNiIIKZGzjwuROjn/t3Zu4N7UaL5TR+o60TsyMWucRRbAyg50aMf4Y4sjdR3YEBOCiABv/r7M3xMZ96qwjhrFFDDl9d2DeL/8T8hBtgtmwoLSBC12CPPzRPRiX4RfMyqvQi1blsMgdARLsZziOhqsIi8+Tf8Oo0UzInu+0wYwJmm6CuSqKFa6WRGTy5xcwEheHoxYmgkMVu/Z6of/v8xL+HsZ9+HNHxpkybEwwFEWMB6iAZcUYTmmTN2DbfEReGpVGHeJeTA7nQUKusyDm9dw5Sz1Cms7cNFw9aTrHh5DeXMvGs8P4custUi/ZykOVDZj5KIB9pDtgjtpKS7ckXzteJ1GdtGv/Jww50RbP0r+Oo9NcWE4tGUNLeW/2JUrKwiDvNxRSu8GTDnz86bPq60qN/FuWRP6dZd4nLA7gVMGRAX7oPyVR7A80Bud1H+PH65E2wWd3TnsJH3j2B88Rd95LI7fK+ZkQOJdgSh5aT38Peej4dwQNn5WDe24HnJg4wtr2/kpejgzkRcsa7AYYHt5/aA3ZUHMEl88GRvK7+2ssJxo02Dz6nDcCNoxPf6jN6lV9HpXkJWMvEq1eRYMKiRJUhNC0kxfTFnQ9sHTXPmnJ1vxYXUL5kp9txZlL6dhdai/RQoy3WwHWOFOM5+YW9JIK5yIqlYNnIHFy5b8Gn5LsoKaBO37NtRNFP+mTvKBK5EknUEQYgVtXmbPtCDshIsRCXYw3TwLNHmZpexfjf0u4RbDdDBdffufLWPvs5LjdvyeXwEAAP//kF1bhgAAAAZJREFUAwCjT8CzC+giAAAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>
+  :root{--b:#1f77a6;--ink:#1f2d3a;--mut:#567;--line:#cfdde8;--bad:#b00020;--ok:#16794a}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;color:var(--ink);background:#f2f6f9;font-size:15px;line-height:1.6}
+  h1{font-size:19px;margin:0}
+  h2{font-size:16px;margin:0 0 10px;padding-bottom:6px;border-bottom:2px solid var(--b)}
+  label{display:block;font-size:13px;color:var(--mut);margin:0 0 3px}
+  input,select{font:inherit;padding:8px;border:1px solid #9bb;border-radius:4px;background:#fff;color:var(--ink);max-width:100%}
+  input[type=checkbox]{width:18px;height:18px;padding:0;vertical-align:middle}
+  button{font:inherit;font-weight:700;padding:9px 20px;border:1px solid var(--b);background:var(--b);color:#fff;border-radius:4px;cursor:pointer}
+  button.sub{background:#fff;color:var(--b)} button.del{background:#fff;color:var(--bad);border-color:var(--bad)}
+  button:disabled{opacity:.5;cursor:default}
+  #login{max-width:360px;margin:12vh auto;background:#fff;border:1px solid var(--line);border-radius:6px;padding:22px}
+  #login input{width:100%;margin-bottom:12px}
+  #login button{width:100%}
+  .msg{min-height:1.5em;margin-top:10px;font-size:14px;white-space:pre-wrap}
+  .msg.bad,.bad-t{color:var(--bad)} .msg.ok,.ok-t{color:var(--ok)}
+  #main{max-width:1000px;margin:0 auto;padding:12px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+  section{background:#fff;border:1px solid var(--line);border-radius:6px;padding:14px;margin-bottom:14px}
+  .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .g>div>input,.g>div>select{width:100%}
+  .days label{display:inline-block;margin-right:14px;color:var(--ink);font-size:15px}
+  .hint{font-size:12px;color:var(--mut);margin-top:3px}
+  .scroll{max-height:55vh;overflow:auto;border:1px solid var(--line);border-radius:4px;margin-top:12px}
+  table{border-collapse:collapse;width:100%}
+  th,td{border-bottom:1px solid var(--line);padding:3px 8px;text-align:left}
+  thead th{position:sticky;top:0;background:#e8f1f7;z-index:1;font-size:13px;white-space:nowrap}
+  #st td.t{width:1%;white-space:nowrap} #st input.xt{width:96px}
+  #st tr.on{background:#eef7ee} #st input.bad{border-color:var(--bad);background:#fff0f0}
+  #sum{margin-top:10px;font-size:15px;min-height:1.6em} #sum.bad{color:var(--bad)}
+  .act{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  #list td.o{white-space:nowrap} #list tr.past{color:#899}
+  #list button{padding:4px 10px;font-size:13px;margin-right:4px}
+  .dw{max-width:100%} .dwrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center} .dwrow input{width:10.5em}
+  .dwmsg{min-height:1.2em} .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .chip{display:inline-flex;align-items:center;gap:4px;background:#e8f1f7;border:1px solid var(--line);border-radius:14px;padding:1px 4px 1px 10px;font-size:13px}
+  .chip button{padding:0 7px;border:0;background:transparent;color:var(--mut);font-size:15px;line-height:1.5}
+  #xwTa{width:100%;min-height:90px;font:inherit;font-size:14px;padding:8px;border:1px solid #9bb;border-radius:4px;resize:vertical}
+  .xw-warn ul{margin:6px 0;padding-left:20px;font-size:13px;color:var(--bad)}
+  #xwResult{margin-top:10px;border:1px solid var(--line);border-radius:4px;max-height:70vh;overflow:auto}
+  #xwResult:empty{display:none}
+  .xw-h{position:sticky;top:0;z-index:2;background:#e8f1f7;font-size:13px;font-weight:700;padding:5px 12px;border-bottom:1px solid var(--line)}
+  .xw-card{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+  .xw-top{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--ink);margin:0}
+  .xw-dupe{font-size:11px;padding:1px 7px;border-radius:9px;background:#f4ecd8;border:1px solid #d9c9a0;color:#6a5420}
+  .xw-sub{font-size:13px;color:var(--mut);padding-left:26px}
+  .xw-row,.xw-dates,.xw-card details{padding-left:26px;font-size:13px}
+  .xw-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+  .xw-row>label{display:flex;flex-direction:column;gap:2px;margin:0} .xw-row>label.in{flex-direction:row;align-items:center;gap:4px;color:var(--ink);font-size:14px}
+  .xw-row input[type=text]{width:10em} .xw-lbl{font-size:13px;color:var(--mut);margin-bottom:3px}
+  .xw-det{margin-top:3px;line-height:1.6;word-break:break-all}
+  @media(max-width:600px){#st input.xt{width:78px}}
+</style>
+</head>
+<body>
+<div id="login">
+  <h1>臨時列車の登録</h1>
+  <p class="hint" style="margin:6px 0 14px">管理者のIDでログインしてください。</p>
+  <form id="lgForm" autocomplete="off">
+    <label for="lgId">ID</label><input id="lgId" type="text" autocomplete="username" autocapitalize="none" spellcheck="false">
+    <label for="lgPw">パスワード</label><input id="lgPw" type="password" autocomplete="current-password">
+    <button id="lgBtn" type="submit">ログイン</button>
+  </form>
+  <div id="lgMsg" class="msg" role="status" aria-live="polite"></div>
+</div>
+
+<div id="main" hidden>
+  <header><h1>臨時列車の登録</h1><button type="button" class="sub" id="logout">ログアウト</button></header>
+
+  <section>
+    <h2 id="formTitle">新しく登録する</h2>
+    <div style="margin-bottom:12px"><label>運転日 <b class="bad-t">*</b></label><div id="dwMount"></div>
+      <div class="hint">年は4桁です。5桁目を打つと月に、月の次は日に移ります。「〜」の右に最終日を入れると、その間の日をまとめて追加できます。</div></div>
+    <div class="g">
+      <div><label for="fNo">列車番号</label><input type="text" id="fNo" maxlength="20" placeholder="例 9101"></div>
+      <div><label for="fType">種別</label><select id="fType"></select></div>
+      <div><label for="fDash">線の種類</label><select id="fDash"></select></div>
+      <div><label for="fLw">線の太さ</label><select id="fLw"></select></div>
+      <div><label for="fNote">備考</label><input type="text" id="fNote" maxlength="100" placeholder="例 団体臨時"></div>
+    </div>
+    <div class="days" style="margin-top:12px"><label style="display:block">表示するダイヤ <b class="bad-t">*</b></label>
+      <label><input type="checkbox" id="d_weekday"> 平日</label><label><input type="checkbox" id="d_holiday"> 休日</label>
+      <div class="hint" id="dayHint">運転日を入れると、その日のダイヤ(平日・休日)が自動で選ばれます。</div></div>
+    <div class="hint" style="margin-top:12px">時刻を入れた駅を通ります(空欄の駅は飛ばします)。「1347」「13:47」「13:47:30」のどれでも入れられます。着か発の片方だけなら、同じ時刻になります。通過にチェックすると、通過時刻として扱います。</div>
+    <div class="scroll"><table id="st"><thead><tr><th>駅</th><th>着</th><th>発</th><th>通過</th></tr></thead><tbody id="rows"></tbody></table></div>
+    <div id="sum" role="status"></div>
+    <div class="act"><button type="button" id="save">登録する</button><button type="button" class="sub" id="clear">入力をクリア</button><span id="saveMsg" class="msg" style="margin:0"></span></div>
+  </section>
+
+  <section>
+    <h2>秩父鉄道のお知らせページから取り込む</h2>
+    <details>
+      <summary style="cursor:pointer;font-weight:700">ページをコピペして、時刻表を読み取る</summary>
+      <div class="hint" style="margin:8px 0;font-size:13px;line-height:1.7">秩父鉄道の臨時列車のお知らせページを開き、<b>全選択(Ctrl+A)→コピー(Ctrl+C)</b>して、下の欄に貼り付けてください(欄をクリックして Ctrl+V)。貼り付けると自動で時刻表を読み取ります。運転日が複数ある列車は、1日ずつの登録としてまとめて送ります。列車番号はページに載っていないため仮の名前を付けています(直せます)。</div>
+      <textarea id="xwTa" placeholder="ここにページ全体を貼り付け" spellcheck="false"></textarea>
+      <div class="act"><button type="button" id="xwParse">読み取る</button><button type="button" class="sub" id="xwReset">貼り付けをクリア</button><span id="xwMsg" class="msg" style="margin:0"></span></div>
+      <div id="xwWarn" class="xw-warn"></div>
+      <div id="xwResult"></div>
+      <div class="act"><button type="button" id="xwSave" disabled>登録する</button><button type="button" class="sub" id="xwAll">すべて選択</button><button type="button" class="sub" id="xwNone">すべて解除</button></div>
+    </details>
+  </section>
+
+  <section>
+    <h2>登録済みの臨時列車</h2>
+    <label style="display:inline-block;color:var(--ink);font-size:14px"><input type="checkbox" id="showPast"> 運転日を過ぎたものも表示</label>
+    <div class="scroll" style="max-height:none"><table id="list"><thead><tr><th>運転日</th><th>列車</th><th>区間</th><th>備考</th><th></th></tr></thead><tbody id="listBody"></tbody></table></div>
+    <div id="listMsg" class="msg"></div>
+  </section>
+</div>
+
+<script>
+'use strict';
+const GAS_URL="https://script.google.com/macros/s/AKfycbw4UvNTzUfG_t5RAfYMH8EVQZSYq49FXyMdw2A1bSztKyn7zPWWzWlLNcccOjLQ7vNR/exec";
+const $=id=>document.getElementById(id);
+const S={tok:'',dev:null,w:null,api:null,editing:null,daysAuto:true,list:[]};
+const mk=(tag,cls,txt)=>{ const e=document.createElement(tag); if(cls) e.className=cls; if(txt!==undefined) e.textContent=txt; return e; };
+const todayStr=()=>{ const t=new Date(), z=n=>String(n).padStart(2,'0'); return t.getFullYear()+'-'+z(t.getMonth()+1)+'-'+z(t.getDate()); };
+
+/* 端末ID: ログイン画面(index.html)と同じ場所・同じ作り方(同じブラウザなら同じ端末として扱われる) */
+function devId(){
+  try{
+    let v=localStorage.getItem('gy_dev');
+    if(!/^[0-9a-f]{32}$/.test(v||'')){
+      const a=new Uint8Array(16); crypto.getRandomValues(a);
+      v=Array.from(a,b=>('0'+b.toString(16)).slice(-2)).join(''); localStorage.setItem('gy_dev',v);
+      if(localStorage.getItem('gy_dev')!==v) return null;
+    }
+    return v;
+  }catch(_){ return null; }
+}
+async function post(body){
+  const r=await fetch(GAS_URL,{method:'POST',body:JSON.stringify(body),redirect:'follow',cache:'no-store'});
+  return r.json();
+}
+async function gas(a,extra){
+  let res;
+  try{ res=await post(Object.assign({a:a,tok:S.tok,dev:S.dev},extra)); }
+  catch(_){ const e=new Error('接続できません。通信状態を確認してください'); e.net=true; throw e; }
+  if(res&&res.tok) S.tok=res.tok;
+  if(!res||!res.ok){
+    if(res&&res.code==='auth'){ alert('ログインの有効期限が切れました。ログインし直してください。'); location.reload(); }
+    const e=new Error((res&&res.msg)||'エラーが発生しました'); throw e;
+  }
+  return res;
+}
+
+/* ---------- ログイン ---------- */
+$('lgForm').addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  const msg=$('lgMsg'), btn=$('lgBtn'), say=(t,bad)=>{ msg.textContent=t; msg.className='msg'+(bad?' bad':''); };
+  const dev=devId(); if(!dev){ say('このブラウザでは使えません(端末の登録ができません)',true); return; }
+  btn.disabled=true; say('確認中…');
+  try{
+    const res=await post({a:'login',id:$('lgId').value.trim(),pw:$('lgPw').value,dev:dev});
+    if(!res||!res.ok||!res.key){ say((res&&res.msg)||'ログインできません',true); $('lgPw').value=''; return; }
+    if(!res.tok){ say('ログイン管理サーバー(GAS)が、まだ臨時列車の登録に対応していません。README の手順でGASを更新してください',true); return; }
+    if(!res.adm){ say('このIDは管理者ではありません',true); $('lgPw').value=''; return; }
+    S.tok=res.tok; S.dev=dev;
+    say('運行図表の駅の情報を読み込んでいます…');
+    await loadDiagram(res.key);
+    buildForm(); $('login').hidden=true; $('main').hidden=false;
+    await refresh();
+  }catch(e){ say(e&&e.diag?e.message:'接続できません。通信状態を確認してください',true); console.warn(e); }
+  finally{ btn.disabled=false; }
+});
+$('logout').addEventListener('click',()=>location.reload());
+
+/* 暗号化された運行図表を開いて、駅の一覧・種別・時刻の読み取りを借りる(ダイヤ改正にも自動で追従する) */
+async function loadDiagram(keyHex){
+  const fail=t=>{ const e=new Error(t); e.diag=true; return e; };
+  const te=new TextEncoder(), key=Uint8Array.from(keyHex.match(/../g),x=>parseInt(x,16)), b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+  const raw=new Uint8Array(await crypto.subtle.digest('SHA-256',new Uint8Array([...te.encode('chichibu-enc-v1'),...key])));
+  const k=await crypto.subtle.importKey('raw',raw,'AES-GCM',false,['decrypt']);
+  const r=await fetch('data/diagram.enc.json',{cache:'no-cache'}); if(!r.ok) throw fail('運行図表のデータを読み込めません');
+  const o=await r.json(); let html;
+  try{ html=new TextDecoder('utf-8').decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(o.iv),additionalData:te.encode('diagram')},k,b64(o.ct))); }
+  catch(_){ throw fail('運行図表のデータを復号できません。管理者に連絡してください'); }
+  const f=document.createElement('iframe'); f.title='運行図表(駅の情報の読み取り用)'; f.setAttribute('aria-hidden','true');
+  f.style.cssText='position:absolute;left:-9999px;top:0;width:1200px;height:800px;border:0;visibility:hidden';
+  await new Promise((ok,ng)=>{ f.onload=ok; f.onerror=ng; f.srcdoc=html; document.body.appendChild(f); setTimeout(()=>ng(new Error('timeout')),20000); }).catch(()=>{ throw fail('運行図表を開けません'); });
+  const w=f.contentWindow, api=w&&w.__chichibu;
+  if(!api||!api.stations||!api.types||typeof w.xParse!=='function'||typeof w.xStr!=='function') throw fail('運行図表の構成が想定と違います。管理者に連絡してください');
+  S.w=w; S.api=api;
+}
+
+/* ---------- 入力フォーム ---------- */
+function buildForm(){
+  const w=S.w, api=S.api;
+  $('fType').replaceChildren(...Object.entries(api.types).map(([k,v])=>{ const o=mk('option',null,v.label); o.value=k; return o; }));
+  $('fType').value=api.types.rinji?'rinji':Object.keys(api.types)[0];
+  const opt=a=>a.map(x=>{ const o=mk('option',null,x[1]); o.value=x[0]; return o; });
+  $('fDash').replaceChildren(...opt(w.eval('DASHES'))); $('fLw').replaceChildren(...opt(w.eval('WIDTHS')));
+  $('rows').replaceChildren(...api.stations.map((s,i)=>{
+    const tr=mk('tr'); tr.dataset.i=i;
+    const td=(cls)=>{ const c=mk('td',cls); tr.appendChild(c); return c; };
+    td().textContent=s.n;
+    for(const c of ['xa','xd']){ const i2=mk('input','xt '+c); i2.type='text'; i2.setAttribute('inputmode','numeric'); i2.autocomplete='off'; i2.setAttribute('aria-label',s.n+(c==='xa'?'の着時刻':'の発時刻')); td('t').appendChild(i2); }
+    const p=mk('input','xp'); p.type='checkbox'; p.setAttribute('aria-label',s.n+'は通過'); td('t').appendChild(p);
+    return tr;
+  }));
+  clearForm();
+}
+/* 運行図表の臨時列車入力フォームと同じ規則: 空欄の駅は飛ばす / 片方だけなら同じ時刻 / 通過は着=発 / 時刻順に並べて重なりを確認 */
+function collect(){
+  const P=S.w.xParse, st=S.api.stations, stops=[]; let bad=null;
+  document.querySelectorAll('#rows tr').forEach(tr=>{
+    const i=+tr.dataset.i, ea=tr.querySelector('.xa'), ed=tr.querySelector('.xd'), ps=tr.querySelector('.xp').checked;
+    ea.classList.remove('bad'); ed.classList.remove('bad');
+    tr.classList.toggle('on',!!(ea.value.trim()||ed.value.trim()));
+    let a=P(ea.value), d=P(ed.value);
+    if(Number.isNaN(a)){ ea.classList.add('bad'); bad=bad||st[i].n+'の着時刻が読み取れません'; return; }
+    if(Number.isNaN(d)){ ed.classList.add('bad'); bad=bad||st[i].n+'の発時刻が読み取れません'; return; }
+    if(a===null&&d===null) return;
+    if(a===null) a=d; if(d===null) d=a;
+    if(ps){ stops.push([i,a,a,1]); return; }
+    if(d<a){ ed.classList.add('bad'); bad=bad||st[i].n+'の発時刻が着時刻より前です'; return; }
+    stops.push([i,a,d]);
+  });
+  if(bad) return {error:bad};
+  if(stops.length<2) return {error:'時刻を入れた駅が2つ以上必要です'};
+  stops.sort((p,q)=>p[1]-q[1]||p[2]-q[2]);
+  for(let k=1;k<stops.length;k++){ if(stops[k][1]<stops[k-1][2]) return {error:st[stops[k][0]].n+'の時刻が重なっています'}; }
+  return {stops};
+}
+function route(stops){ const st=S.api.stations, a=stops[0], z=stops[stops.length-1], t=S.w.xStr; return st[a[0]].n+' '+t(a[2])+' 発 → '+st[z[0]].n+' '+t(z[1])+' 着'; }
+function sum(){
+  const c=collect(), el=$('sum');
+  if($('saveMsg').classList.contains('bad')) flash('');                 // 入力を直したら、前回のエラーは消す
+  if(c.error){ el.textContent=c.error; el.className='bad'; }
+  else{ el.textContent='この列車: '+route(c.stops)+'('+c.stops.length+'駅)'; el.className=''; }
+}
+function flash(t,bad){ const m=$('saveMsg'); m.textContent=t; m.className='msg '+(bad?'bad':'ok'); }
+function clearForm(){
+  S.editing=null; S.daysAuto=true; $('formTitle').textContent='新しく登録する'; $('save').textContent='登録する'; flash('');
+  ['fNo','fNote'].forEach(i=>$(i).value=''); $('fType').value=S.api.types.rinji?'rinji':Object.keys(S.api.types)[0]; $('fDash').value='auto'; $('fLw').value='auto';
+  $('d_weekday').checked=false; $('d_holiday').checked=false; dateW.set([]);
+  document.querySelectorAll('#rows tr').forEach(tr=>{ tr.querySelector('.xa').value=''; tr.querySelector('.xd').value=''; tr.querySelector('.xp').checked=false; });
+  sum(); $('sum').textContent='';
+}
+function fill(r){
+  clearForm();
+  S.daysAuto=false; dateW.set([r.opDate]);
+  $('fNo').value=r.no||''; $('fType').value=r.type; $('fDash').value=r.dash||'auto'; $('fLw').value=r.lw||'auto'; $('fNote').value=r.note||'';
+  $('d_weekday').checked=(r.days||[]).includes('weekday'); $('d_holiday').checked=(r.days||[]).includes('holiday'); dayHint();
+  r.stops.forEach(([i,a,d,ps])=>{ const tr=document.querySelector('#rows tr[data-i="'+i+'"]'); if(!tr) return; tr.querySelector('.xa').value=S.w.xStr(a); tr.querySelector('.xd').value=S.w.xStr(d); tr.querySelector('.xp').checked=!!ps; });
+  sum(); window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* 運転日ごとのダイヤ(平日・休日)。ダイヤのチェックを自分で変えていないあいだは、日付ごとに自動で決める */
+function kindOf(s){ const [y,m,d]=s.split('-').map(Number); return S.api.todayDay(new Date(y,m-1,d)); }
+function dayHint(){
+  const ds=dateW.get(), h=$('dayHint');
+  if(!S.daysAuto){ h.textContent='チェックしたダイヤで、すべての運転日に登録します。'; return; }
+  if(!ds.length){ h.textContent='運転日を入れると、その日のダイヤ(平日・休日)が自動で選ばれます。'; return; }
+  const w=ds.filter(d=>kindOf(d)==='weekday').length, hd=ds.length-w;
+  h.textContent='運転日ごとのダイヤ(平日'+w+'日・休日'+hd+'日)で登録します。両方のダイヤに出したいときは、チェックを付け直してください。';
+}
+function onDatesChange(){
+  if(!S.api) return;
+  if(S.daysAuto){ const ks=new Set(dateW.get().map(kindOf)); $('d_weekday').checked=ks.has('weekday'); $('d_holiday').checked=ks.has('holiday'); }
+  dayHint();
+}
+
+async function save(){
+  const c=collect(); sum();
+  if(c.error){ flash(c.error,true); return; }
+  if(!dateW.commit()){ flash('運転日を直してください',true); return; }
+  const dates=dateW.get();
+  if(!dates.length){ flash('運転日を入れてください',true); return; }
+  const manual=['weekday','holiday'].filter(k=>$('d_'+k).checked);
+  if(!S.daysAuto&&!manual.length){ flash('表示するダイヤ(平日・休日)を選んでください',true); return; }
+  const base={no:$('fNo').value.trim(),type:$('fType').value,dash:$('fDash').value,lw:$('fLw').value,note:$('fNote').value.trim()};
+  const trains=dates.map((d,i)=>{
+    const t=Object.assign({},base,{opDate:d,days:S.daysAuto?[kindOf(d)]:manual.slice(),stops:c.stops.map(s=>s.slice())});
+    if(i===0&&S.editing) t.id=S.editing;
+    return t;
+  });
+  if(base.no){
+    const dup=trains.filter(t=>S.list.some(r=>r.opDate===t.opDate&&r.no===t.no&&r.id!==t.id)).map(t=>t.opDate);
+    if(dup.length&&!confirm('同じ運転日・列車番号('+base.no+')の登録がすでにあります: '+dup.slice(0,5).join(', ')+(dup.length>5?' ほか':'')+'\nそれでも追加しますか?')) return;
+  }
+  if(trains.length>30&&!confirm(trains.length+'日分を1日ずつ送信します。時間がかかります。続けますか?')) return;
+  const b=$('save'); b.disabled=true; let done=0;
+  try{
+    for(const t of trains){ flash(trains.length>1?'送信中… '+(done+1)+'/'+trains.length:'送信中…'); await gas('xput',{train:t}); done++; }
+    const did=S.editing?'更新しました':'登録しました';
+    const when=trains.length>1?(trains.length+'日分('+dates[0]+' 〜 '+dates[dates.length-1]+')'):dates[0];
+    clearForm(); flash(did+': '+when+' '+(base.no||'番号なし')+'  '+route(c.stops)); await refresh();
+  }catch(e){
+    if(done){ S.editing=null; $('formTitle').textContent='新しく登録する'; $('save').textContent='登録する'; dateW.set(dates.slice(done)); }
+    flash((done?done+'日分は登録できました。続きで失敗しました: ':'')+e.message+(done?'\n登録できていない日だけを運転日に残しています。もう一度「登録する」を押してください。':''),true);
+    await refresh();
+  }
+  finally{ b.disabled=false; }
+}
+
+/* ---------- 登録済みの一覧 ---------- */
+async function refresh(){
+  const m=$('listMsg'); m.textContent=''; m.className='msg';
+  try{ S.list=(await gas('xlist')).trains; renderList(); }
+  catch(e){ m.textContent=e.message; m.className='msg bad'; }
+}
+function renderList(){
+  const body=$('listBody'), today=todayStr(), all=$('showPast').checked, rows=S.list.filter(r=>all||r.opDate>=today);
+  body.replaceChildren(...rows.map(r=>{
+    const tr=mk('tr',r.opDate<today?'past':''); tr.appendChild(mk('td','o',r.opDate+(r.opDate===today?'(今日)':'')));
+    tr.appendChild(mk('td',null,(r.no||'番号なし')+'  '+(S.api.types[r.type]?S.api.types[r.type].label:r.type)));
+    tr.appendChild(mk('td',null,route(r.stops))); tr.appendChild(mk('td',null,r.note||''));
+    const op=mk('td','o'), btn=(t,cls,fn)=>{ const b=mk('button',cls,t); b.type='button'; b.addEventListener('click',fn); op.appendChild(b); };
+    btn('編集','sub',()=>{ fill(r); S.editing=r.id; $('formTitle').textContent='登録内容を変更する'; $('save').textContent='更新する'; });
+    btn('複製','sub',()=>{ fill(r); S.editing=null; S.daysAuto=true; dateW.set([]); $('d_weekday').checked=false; $('d_holiday').checked=false; dayHint(); flash('複製しました。運転日を入れて登録してください'); });
+    btn('削除','del',async()=>{ if(!confirm(r.opDate+' '+(r.no||'番号なし')+' の登録を削除します。よろしいですか?')) return; try{ await gas('xdel',{id:r.id}); if(S.editing===r.id) clearForm(); await refresh(); }catch(e){ $('listMsg').textContent=e.message; $('listMsg').className='msg bad'; } });
+    tr.appendChild(op); return tr;
+  }));
+  if(!rows.length){ const tr=mk('tr'), td=mk('td',null,'登録はありません'); td.colSpan=5; tr.appendChild(td); body.appendChild(tr); }
+}
+
+$('rows').addEventListener('input',sum); $('rows').addEventListener('change',sum);
+$('save').addEventListener('click',save); $('clear').addEventListener('click',clearForm); $('showPast').addEventListener('change',renderList);
+
+/* ================================================================
+   運転日の入力: 年は4桁、5桁目を打つと月に移り、月の次は日に移る。「〜」で最終日を入れると、その間の日をまとめて追加できる
+   ================================================================ */
+const WD='日月火水木金土';
+const isoOf=(y,m,d)=>y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+function fmtDateDigits(raw){
+  const dg=String(raw||'').replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)).replace(/\D/g,'').slice(0,8);
+  let out=dg.slice(0,4), r=dg.slice(4);
+  if(r){
+    let m;
+    if(+r[0]>1){ m=r[0]; r=r.slice(1); }                         // 2〜9 は1桁の月(次の数字は日)
+    else if(r.length>=2){ m=(+r.slice(0,2)>12)?r[0]:r.slice(0,2); r=r.slice(m.length); }
+    else { m=r; r=''; }
+    out+='-'+m;
+    if(r){ const d=(+r[0]>3)?r[0]:r.slice(0,2); out+='-'+d; }     // 4〜9 は1桁の日
+  }
+  return out;
+}
+function normDate(s){
+  const t=String(s||'').replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)).trim();
+  const m=t.match(/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})$/); if(!m) return null;
+  const y=+m[1], mo=+m[2], d=+m[3], dt=new Date(y,mo-1,d);
+  if(y<2000||dt.getFullYear()!==y||dt.getMonth()!==mo-1||dt.getDate()!==d) return null;
+  return isoOf(y,mo,d);
+}
+function dateInput(ph,label){
+  const i=mk('input'); i.type='text'; i.setAttribute('inputmode','numeric'); i.autocomplete='off'; i.placeholder=ph; i.setAttribute('aria-label',label);
+  const f=()=>{ const v=fmtDateDigits(i.value); if(v!==i.value) i.value=v; };
+  i.addEventListener('input',ev=>{ if(!ev.isComposing) f(); });
+  i.addEventListener('compositionend',f);
+  return i;
+}
+function dateWidget(onChange){
+  let dates=[];
+  const root=mk('div','dw'), row=mk('div','dwrow'), a=dateInput('2026-11-22','運転日'), b=dateInput('最終日(任意)','最終日(続けて運転するとき)'),
+        add=mk('button','sub','追加'), chips=mk('div','chips'), msg=mk('div','hint dwmsg');
+  add.type='button'; row.append(a,mk('span',null,'〜'),b,add); root.append(row,msg,chips);
+  const say=(t,bad)=>{ msg.textContent=t||''; msg.className='hint dwmsg'+(bad?' bad-t':''); };
+  const fire=()=>{ if(onChange) onChange(dates.slice()); };
+  const draw=()=>{
+    chips.replaceChildren(...dates.map(d=>{
+      const [y,m,dd]=d.split('-').map(Number), c=mk('span','chip',d+'('+WD[new Date(y,m-1,dd).getDay()]+')'), x=mk('button',null,'×');
+      x.type='button'; x.setAttribute('aria-label',d+'を外す');
+      x.addEventListener('click',()=>{ dates=dates.filter(q=>q!==d); draw(); fire(); });
+      c.appendChild(x); return c;
+    }));
+  };
+  function commit(){                                 // 入力欄に残っている日付を追加する。なければ何もしない(true)
+    const sa=a.value.trim(), sb=b.value.trim();
+    if(!sa&&!sb) return true;
+    const da=normDate(sa); if(!da){ say('運転日が読み取れません(例 2026-11-22)',true); return false; }
+    let list=[da];
+    if(sb){
+      const db=normDate(sb); if(!db){ say('最終日が読み取れません',true); return false; }
+      if(db<da){ say('最終日が運転日より前です',true); return false; }
+      list=[]; const [y,m,d]=da.split('-').map(Number), t=new Date(y,m-1,d);
+      for(let n=0;n<63;n++){ const s=isoOf(t.getFullYear(),t.getMonth()+1,t.getDate()); if(s>db) break; list.push(s); t.setDate(t.getDate()+1); }
+      if(list[list.length-1]!==db){ say('続けて入れられるのは63日分までです',true); return false; }
+    }
+    dates=[...new Set(dates.concat(list))].sort();
+    a.value=''; b.value=''; say(list.length>1?list.length+'日分を追加しました':''); draw(); fire(); return true;
+  }
+  add.addEventListener('click',()=>{ if(commit()) a.focus(); });
+  for(const i of [a,b]) i.addEventListener('keydown',ev=>{ if(ev.key==='Enter'){ ev.preventDefault(); if(commit()) a.focus(); } });
+  return {el:root,get:()=>dates.slice(),commit,set(arr){ dates=[...new Set(arr||[])].sort(); a.value=''; b.value=''; say(''); draw(); fire(); }};
+}
+const dateW=dateWidget(onDatesChange);
+$('dwMount').appendChild(dateW.el);
+for(const id of ['d_weekday','d_holiday']) $(id).addEventListener('change',()=>{ S.daysAuto=false; dayHint(); });
+
+/* ================================================================
+   秩父鉄道の「臨時列車のお知らせ」ページからのコピペ取り込み(運行図表の「ツール」と同じ読み取り規則)
+   ページ全体をコピーして貼り付けると、時刻表の表から 種別・運転日・各駅の着発 を取り出す。
+   運転日が複数あるものは、1日ずつの登録としてまとめて送る。
+   ================================================================ */
+const X={items:[],html:null};
+const xwZen=s=>String(s==null?'':s).replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)).replace(/：/g,':');
+const xwSq=s=>xwZen(s).replace(/[\s\u00a0\u3000]+/g,'');
+function xwStMap(){ const m={}; S.api.stations.forEach((o,i)=>{ m[xwSq(o.n).replace(/[(（].*?[)）]/g,'')]=i; }); return m; }
+function xwDates(t,defY){
+  t=xwZen(t); const res=[]; let y=defY, mo=null, m;
+  const re=/(?:(\d{4})年)?(?:(\d{1,2})月)?(\d{1,2})日(?:[（(]([^）)]*)[）)])?/g;
+  while((m=re.exec(t))){
+    if(m[1]) y=+m[1];
+    if(m[2]) mo=+m[2];
+    if(mo===null) continue;
+    const d=+m[3], p=m[4]||'', wm=p.match(/[日月火水木金土]/);
+    const w=wm?'日月火水木金土'.indexOf(wm[0]):new Date(y,mo-1,d).getDay();
+    res.push({y,m:mo,d,hol:(w===0||w===6||/祝/.test(p))});
+  }
+  return res;
+}
+function xwCell(t){
+  t=xwSq(t);
+  const A=t.match(/(\d{1,2}):(\d{2})着/), D=t.match(/(\d{1,2}):(\d{2})発/);
+  let a=null, d=null;
+  if(A||D){ if(A) a=Number(A[1])*60+Number(A[2]); if(D) d=Number(D[1])*60+Number(D[2]); }
+  else{ const m=t.match(/^(\d{1,2}):(\d{2})/); if(m) a=d=Number(m[1])*60+Number(m[2]); }
+  if(a===null&&d===null) return null;
+  if(a===null) a=d; if(d===null) d=a;
+  if(a>1500||d>1500) return null;
+  return [a,d];
+}
+function xwShort(title){
+  return xwZen(title).replace(/\d+月\d+日.*$/,'').replace(/[（(][^）)]*[）)]/g,'').replace(/第\d+回/g,'')
+    .replace(/≪[^≫]*≫/g,'').replace(/臨時列車|時刻表|運転|用/g,'').replace(/大会|まつり|祭り|期間|休み/g,'').replace(/\s+/g,'')||'臨時';
+}
+function xwType(label,title){
+  const s=label+' '+title; let k='local';
+  if(/SL|パレオ/.test(s)) k='sl'; else if(/回送/.test(s)) k='empty'; else if(/貨物/.test(s)) k='freight'; else if(/西武/.test(s)) k='seibu'; else if(/急行|特急/.test(s)) k='express';
+  return S.api.types[k]?k:(S.api.types.rinji?'rinji':Object.keys(S.api.types)[0]);
+}
+function xwParseDoc(html){
+  const st=S.api.stations, fmt=S.w.xStr, XW_ST=xwStMap();
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  doc.querySelectorAll('script,style,noscript').forEach(e=>e.remove());
+  doc.querySelectorAll('br').forEach(b=>b.replaceWith('\n'));
+  const body=doc.body; if(!body) return {items:[],warns:['ページを読み取れませんでした']};
+  const txt=e=>(e.textContent||'').replace(/[\u00a0\u3000]/g,' ').replace(/[ \t]+/g,' ').trim();
+  const notes={}, all=body.textContent||'';
+  const fre=/※\s*([0-9０-９]+)\s*[→＝=:：]\s*([^\n]+?)(?=※\s*[0-9０-９]+\s*[→＝=:：]|\n|$)/g; let m;
+  while((m=fre.exec(all))){ const k=xwZen(m[1]); if(!notes[k]) notes[k]=m[2].replace(/\s+/g,' ').trim(); }
+  const ym=((doc.title||'')+all).match(/(20\d\d)年/);
+  const defY=ym?+ym[1]:new Date().getFullYear();
+  const items=[], warns=[];
+  let mode=null, ctxDates=[];
+  const els=body.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,dt,dd,table');
+  for(const el of els){
+    const tag=el.tagName;
+    if(tag!=='TABLE'){
+      if(el.closest('table')) continue;
+      const t=txt(el);
+      if(/^H[1-6]$/.test(tag)){
+        if(/^運転(日|期間)/.test(t)) mode='dates';
+        else if(/^(運転区間|停車駅|使用車両|その他)/.test(t)) mode=null;
+        else { mode=null; ctxDates=[]; }
+      }else if(mode==='dates' && !/[～〜~]/.test(t)){
+        xwDates(t,defY).forEach(x=>ctxDates.push(x));
+      }
+      continue;
+    }
+    if(el.parentElement&&el.parentElement.closest('table')) continue;
+    const rows=[...el.rows].map(tr=>{
+      const cells=[];
+      [...tr.cells].forEach(c=>{ const n=Math.max(1,Math.min(+c.colSpan||1,40)), t=txt(c); for(let i=0;i<n;i++) cells.push({t,fill:i>0}); });
+      return cells;
+    });
+    const stIdx=r=>{ const k=xwSq(r[0]?r[0].t:'').replace(/[(（].*?[)）]/g,''); return (k in XW_ST)?XW_ST[k]:-1; };
+    const fs=rows.findIndex(r=>stIdx(r)>=0);
+    if(fs<0) continue;
+    const head=rows.slice(0,fs), cap=el.caption?txt(el.caption):'';
+    let title=cap, labelRows=[];
+    if(cap) labelRows=head;
+    else if(head.length>=2){ title=(head[0].find(c=>c.t)||{t:''}).t; labelRows=head.slice(1); }
+    else if(head.length===1){
+      if(head[0].some((c,i)=>i>0&&c.t&&!c.fill)) labelRows=head;
+      else title=(head[0].find(c=>c.t)||{t:''}).t;
+    }
+    const ncol=Math.max(...rows.map(r=>r.length));
+    const labels=[];
+    for(let c=1;c<ncol;c++){
+      let l=labelRows.map(r=>(r[c]?r[c].t:'')).filter(Boolean).join(' ');
+      if(!l&&c>1) l=labels[c-1]||'';
+      labels[c]=l;
+    }
+    const T=xwZen(title);
+    const hW=/平日/.test(T), hH=/休日|土休|土曜|日曜|祝日/.test(T);
+    let ds=xwDates(T,defY); if(!ds.length) ds=ctxDates.slice();
+    const seen=new Set(); ds=ds.filter(x=>{ const k=x.y+'-'+x.m+'-'+x.d; if(seen.has(k)) return false; seen.add(k); return true; });
+    const dates=ds.map(x=>isoOf(x.y,x.m,x.d)).filter(normDate).sort();
+    const explicit=(hW||hH)?[hW&&'weekday',hH&&'holiday'].filter(Boolean):null;
+    const dir=/のぼり|上り/.test(T)?'上':(/くだり|下り/.test(T)?'下':'');
+    const dayTag=(hW&&!hH)?'平':((hH&&!hW)?'休':'');
+    const short=xwShort(title);
+    const ev=T.replace(/\d+月\d+日.*$/,'').replace(/[（(][^）)]*[）)]/g,'').replace(/時刻表/g,'').replace(/\s+/g,' ').trim()||'臨時列車';
+    let seq=0;
+    for(let c=1;c<ncol;c++){
+      let stops=[], prev=-1;
+      for(const r of rows.slice(fs)){
+        const i=stIdx(r);
+        if(i<0){
+          if(r[0]&&r[0].t&&r.slice(1).some(x=>xwCell(x.t))) warns.push('「'+r[0].t+'」は図表にない駅のため読み飛ばしました('+ev+')');
+          continue;
+        }
+        const tm=r[c]?xwCell(r[c].t):null;
+        if(!tm) continue;
+        let [a,d]=tm;
+        if(prev>=0&&a<prev-720){ a+=1440; d+=1440; }
+        prev=d; stops.push([i,a,d]);
+      }
+      if(!stops.length) continue;
+      seq++;
+      const label=(labels[c]||'').replace(/\s+/g,' ').trim();
+      const nm=short+dayTag+dir+seq;
+      const bad=r=>{ warns.push('「'+nm+'」('+ev+' '+label+')は'+r+'ため取り込めません'); };
+      if(stops.length<2){ bad('駅が1つしか読み取れない'); continue; }
+      if(stops[0][1]>stops[stops.length-1][1]) stops=stops.reverse();
+      let okT=true, up=true, down=true;
+      for(let k=1;k<stops.length;k++){
+        if(stops[k][1]<stops[k-1][2]||stops[k][2]<stops[k][1]) okT=false;
+        if(stops[k][0]<=stops[k-1][0]) up=false;
+        if(stops[k][0]>=stops[k-1][0]) down=false;
+      }
+      if(!okT){ bad('時刻が前後している'); continue; }
+      if(!up&&!down){ bad('駅の並びが一方向でない'); continue; }
+      if(stops.some(s=>s[2]>1740)){ bad('時刻が翌日の範囲を超えている'); continue; }
+      const fn=[...label.matchAll(/※\s*([0-9０-９]+)/g)].map(x=>xwZen(x[1]));
+      const lab=label.replace(/※\s*[0-9０-９]+/g,'').replace(/\s+/g,'').trim();
+      const note=[ev,lab].filter(Boolean).join(' ')+fn.map(n=>notes[n]?' / ※'+n+' '+notes[n]:'').join('');
+      const a0=stops[0], z0=stops[stops.length-1];
+      items.push({ev,label,no:nm,type:xwType(label,title),stops,dates:dates.slice(),
+        note:note.slice(0,100),
+        sum:st[a0[0]].n+' '+fmt(a0[2])+' → '+st[z0[0]].n+' '+fmt(z0[1]),
+        det:stops.map(s=>st[s[0]].n+' '+fmt(s[1])+(s[2]!==s[1]?'/'+fmt(s[2]):'')).join(' → '),
+        daysAuto:!explicit, days:explicit?explicit.slice():[], on:true});
+    }
+  }
+  return {items,warns};
+}
+const xwKey=o=>JSON.stringify(o.stops);
+const xwHave=(date,o)=>S.list.some(r=>r.opDate===date&&JSON.stringify(r.stops)===xwKey(o));
+function xwMsg(t,bad){ const m=$('xwMsg'); m.textContent=t||''; m.className='msg '+(bad?'bad':'ok'); m.style.margin='0'; }
+function xwBtn(){
+  const n=X.items.filter(o=>o.on).length;
+  $('xwSave').disabled=!n; $('xwSave').textContent=n?('選んだ'+n+'本を登録'):'登録する';
+}
+function xwRender(){
+  const box=$('xwResult'); box.replaceChildren();
+  X.items.forEach(o=>{ o.dupe=!!o.dates.length&&o.dates.every(d=>xwHave(d,o)); });
+  let last=null;
+  X.items.forEach((o,i)=>{
+    if(o.ev!==last){ last=o.ev; box.appendChild(mk('div','xw-h',o.ev)); }
+    const card=mk('div','xw-card');
+    const top=mk('label','xw-top'), cb=mk('input'); cb.type='checkbox'; cb.checked=o.on;
+    cb.addEventListener('change',()=>{ o.on=cb.checked; xwBtn(); });
+    top.append(cb,mk('b',null,o.sum)); if(o.dupe) top.append(mk('span','xw-dupe','登録済みと同じ時刻'));
+    card.append(top,mk('div','xw-sub',o.label||''));
+    // 列車番号・種別
+    const r1=mk('div','xw-row'), l1=mk('label',null,'列車番号'), no=mk('input'); no.type='text'; no.maxLength=20; no.value=o.no; no.autocomplete='off';
+    no.addEventListener('input',()=>{ o.no=no.value; }); l1.appendChild(no);
+    const l2=mk('label',null,'種別'), sel=mk('select');
+    Object.entries(S.api.types).forEach(([k,v])=>{ const op=mk('option',null,v.label); op.value=k; if(k===o.type) op.selected=true; sel.appendChild(op); });
+    sel.addEventListener('change',()=>{ o.type=sel.value; }); l2.appendChild(sel); r1.append(l1,l2); card.appendChild(r1);
+    // 運転日(複数可)
+    const r2=mk('div','xw-dates'); r2.appendChild(mk('div','xw-lbl','運転日'+(o.dates.length?'':'(読み取れませんでした。入れてください)')));
+    const hint=mk('div','hint');
+    const dw=dateWidget(ds=>{ o.dates=ds; o.dupe=!!ds.length&&ds.every(d=>xwHave(d,o)); upd(); });
+    o._dw=dw; r2.append(dw.el,hint); card.appendChild(r2);
+    // ダイヤ
+    const r3=mk('div','xw-row'); r3.appendChild(mk('span',null,'ダイヤ:'));
+    const cw=mk('input'), ch=mk('input'); cw.type=ch.type='checkbox';
+    const lw=mk('label','in'), lh=mk('label','in'); lw.append(cw,' 平日'); lh.append(ch,' 休日'); r3.append(lw,lh); card.appendChild(r3);
+    function upd(){
+      if(o.daysAuto){
+        const ks=new Set(o.dates.map(kindOf)); cw.checked=ks.has('weekday'); ch.checked=ks.has('holiday');
+        const w=o.dates.filter(d=>kindOf(d)==='weekday').length;
+        hint.textContent=o.dates.length?('運転日ごとのダイヤ(平日'+w+'日・休日'+(o.dates.length-w)+'日)で登録します。'):'';
+      }else{ cw.checked=o.days.includes('weekday'); ch.checked=o.days.includes('holiday'); hint.textContent='チェックしたダイヤで、すべての運転日に登録します。'; }
+    }
+    for(const x of [cw,ch]) x.addEventListener('change',()=>{ o.daysAuto=false; o.days=['weekday','holiday'].filter((k,j)=>[cw,ch][j].checked); upd(); });
+    dw.set(o.dates);
+    const det=mk('details'); det.append(mk('summary',null,'読み取った時刻を確認'),mk('div','xw-det',o.det)); card.appendChild(det);
+    box.appendChild(card);
+  });
+  xwBtn();
+}
+function xwLoad(html){
+  const r=xwParseDoc(html); X.items=r.items;
+  const w=$('xwWarn'); w.replaceChildren();
+  if(r.warns.length){ const ul=mk('ul'); [...new Set(r.warns)].forEach(s=>ul.appendChild(mk('li',null,s))); w.appendChild(ul); }
+  if(!X.items.length){ xwMsg('時刻表を読み取れませんでした。ページの形が想定と違う可能性があります。',true); xwRender(); return false; }
+  X.items.forEach(o=>{ o.dupe=!!o.dates.length&&o.dates.every(d=>xwHave(d,o)); o.on=!o.dupe; });
+  xwMsg(X.items.length+'本の列車を読み取りました。内容を確認して、登録するものにチェックを付けてください。');
+  xwRender(); return true;
+}
+function xwFromPaste(){
+  const v=$('xwTa').value||''; let html=null;
+  if(X.html&&/<table/i.test(X.html)) html=X.html; else if(/<table/i.test(v)) html=v;
+  if(!html){ xwMsg('貼り付けた内容に時刻表(表)が見つかりません。ページ全体を全選択(Ctrl+A)してコピーし、貼り付けてください。',true); return; }
+  try{ xwLoad(html); }catch(e){ console.warn(e); xwMsg('読み取りに失敗しました: '+e.message,true); }
+}
+async function xwSave(){
+  const on=X.items.filter(o=>o.on); if(!on.length) return;
+  for(const o of on){ if(!o._dw.commit()){ xwMsg('運転日を直してください(「'+(o.no||o.sum)+'」)',true); return; } }
+  for(const o of on){
+    if(!o.dates.length){ xwMsg('運転日が未入力の列車があります(「'+(o.no||o.sum)+'」)',true); return; }
+    if(!o.daysAuto&&!o.days.length){ xwMsg('ダイヤ(平日・休日)が未選択の列車があります(「'+(o.no||o.sum)+'」)',true); return; }
+  }
+  const trains=[]; let skipped=0;
+  for(const o of on) for(const d of o.dates){
+    if(xwHave(d,o)){ skipped++; continue; }                       // 同じ日・同じ時刻がすでに登録されている分は飛ばす
+    trains.push({no:(o.no||'').trim(),type:o.type,dash:'auto',lw:'auto',note:o.note||'',opDate:d,days:o.daysAuto?[kindOf(d)]:o.days.slice(),stops:o.stops.map(s=>s.slice())});
+  }
+  if(!trains.length){ xwMsg('登録するものがありません(すべて登録済みと同じ内容です)',true); return; }
+  if(trains.length>30&&!confirm(trains.length+'件を1件ずつ送信します。時間がかかります。続けますか?')) return;
+  $('xwSave').disabled=true; let done=0;
+  try{
+    for(const t of trains){ xwMsg('送信中… '+(done+1)+'/'+trains.length); await gas('xput',{train:t}); done++; }
+    X.items=[]; xwRender(); $('xwWarn').replaceChildren(); $('xwTa').value=''; X.html=null;
+    await refresh();
+    xwMsg(done+'件を登録しました'+(skipped?('('+skipped+'件は登録済みのため飛ばしました)'):''));
+  }catch(e){
+    await refresh(); xwRender();
+    xwMsg((done?done+'件は登録できました。続きで失敗しました: ':'')+e.message+(done?'\nもう一度「登録」を押すと、登録済みの分を飛ばして続きから送ります。':''),true);
+  }
+}
+$('xwParse').addEventListener('click',xwFromPaste);
+$('xwReset').addEventListener('click',()=>{ $('xwTa').value=''; X.html=null; X.items=[]; xwRender(); $('xwWarn').replaceChildren(); xwMsg(''); });
+$('xwTa').addEventListener('paste',e=>{ const h=e.clipboardData&&e.clipboardData.getData('text/html'); X.html=h||null; setTimeout(xwFromPaste,0); });
+$('xwTa').addEventListener('input',e=>{ if(!e.target.value.trim()) X.html=null; });
+$('xwSave').addEventListener('click',xwSave);
+$('xwAll').addEventListener('click',()=>{ X.items.forEach(o=>o.on=true); xwRender(); });
+$('xwNone').addEventListener('click',()=>{ X.items.forEach(o=>o.on=false); xwRender(); });
+</script>
+</body>
+</html>
