@@ -409,7 +409,7 @@ function infoStart(){ infoWatch(); setInterval(infoWatch,1000); }
    反映は運行図表の __chichibu.applyFormations を使います(図表側で取り込み直後の内容を「保存済み」として扱うため、
    名前つき保存セットの「未保存」判定には混ざりません)。 */
 const FM_POLL_MS=5*60*1000, FM_CHECK_MS=20*1000, FM_WATCH_MS=3*1000;
-const FM={sig:null,localSig:null,last:0,busy:false,pushOk:true,started:false,api:null,date:null};
+const FM={sig:null,localSig:null,last:0,busy:false,pushOk:true,started:false,api:null,date:null,ready:false};
 const fmSig=(day,forms)=>day+'|'+JSON.stringify(forms||{});
 function fmToast(msg){
   const t=document.getElementById('toast'); if(!t) return;
@@ -450,12 +450,15 @@ async function fmSync(initial){
     if(res.day&&res.day!==loc.day) return;                     // 今日のダイヤと違う日の記録は反映しない
     const serverSig=res.day?fmSig(loc.day,res.forms||{}):null; // null = サーバーに今日の記録がない
     const localSig=fmSig(loc.day,loc.forms);
-    if(initial){
+    if(initial||!FM.ready){
       /* 起動時と日付が変わったとき: サーバーに記録があれば、それを正として反映する。
-         記録がない日は、端末の入力をそのまま使う(消したり送ったりしない) */
+         記録がない日は、端末の入力をそのまま使う(消したり送ったりしない)。
+         初回の取り込みが成功するまでは、通常の同期でもこの分岐に入る。
+         (取り込み前に端末の状態を送ると、空の内容でサーバーの記録を上書きしてしまうため) */
       if(serverSig!==null&&serverSig!==localSig){ FM.api.applyFormations(res.forms||{},loc.day); fmToast('今日の編成をサーバーから読み込みました'); FM.localSig=serverSig; }
       else FM.localSig=localSig;
       FM.sig=serverSig;
+      FM.ready=true;
     }else if(localSig!==FM.localSig){
       /* この端末で編成が変わった → サーバーへ送る(成功するのは管理者だけ) */
       if(FM.pushOk){
